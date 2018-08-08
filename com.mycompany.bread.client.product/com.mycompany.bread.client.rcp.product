@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="com.mycompany.bread.client.rcp" uid="com.mycompany.bread.client.rcp.product.id" id="com.mycompany.bread.client.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="0.0.1.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-clearPersistedState
+      </programArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      </vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <launcher name="BreadLauncher">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="com.mycompany.bread.client.feature" version="0.0.1.qualifier"/>
+      <feature id="org.eclipse.persistence.jpa.source" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.moxy" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.moxy.source" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.nosql" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.nosql.source" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.sdk" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.sdo" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.sdo.source" version="2.7.2.v20180622-f627448"/>
+      <feature id="org.eclipse.persistence.dbwsbuilder"/>
+      <feature id="org.eclipse.persistence.dbws.source"/>
+      <feature id="org.eclipse.persistence.dbws"/>
+      <feature id="org.eclipse.persistence.jpa"/>
+      <feature id="org.eclipse.persistence.dbwsbuilder.source"/>
+      <feature id="org.eclipse.rcp" version="4.5.2.v20160212-1500"/>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.emf.common"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="0" />
+   </configurations>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
+
+</product>

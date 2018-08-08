@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="com.mycompany.bread.client.rcp"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="clearPersistedState"
+               value="false">
+         </property>
+         <property
+               name="appName"
+               value="com.mycompany.bread.client.rcp">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
