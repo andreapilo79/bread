@@ -24,8 +24,8 @@ import javax.inject.Inject;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.workbench.modeling.EPartService;
 
-import com.mycompany.bread.dao.CustomerDAO;
 import com.mycompany.bread.domain.customer.Customer;
+import com.mycompany.bread.service.customer.CustomerService;
 
 /**
  * Action: add random customer in databse
@@ -43,13 +43,13 @@ public class AddCustomerInDatabase
     private Random random = new Random();
 
     @Inject
-    private CustomerDAO customerDAO;
+    private CustomerService customerService;
 
     @Execute
     public void execute(EPartService partService)
     {
         Customer randomCustomer = getRandomCustomer();
-        customerDAO.save(randomCustomer);
+        customerService.save(randomCustomer);
     }
 
     private Customer getRandomCustomer()

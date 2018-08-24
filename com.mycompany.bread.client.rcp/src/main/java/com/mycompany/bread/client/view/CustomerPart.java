@@ -16,7 +16,7 @@
 package com.mycompany.bread.client.view;
 
 import java.text.DateFormat;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -39,8 +39,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 
-import com.mycompany.bread.dao.CustomerDAO;
 import com.mycompany.bread.domain.customer.Customer;
+import com.mycompany.bread.service.customer.CustomerService;
 
 /**
  * Customer Part
@@ -59,7 +59,7 @@ public class CustomerPart
     private ESelectionService selectionService;
 
     @Inject
-    private CustomerDAO customerDAO;
+    private CustomerService customerService;
 
     @PostConstruct
     public void createControls(Composite parent)
@@ -69,7 +69,7 @@ public class CustomerPart
         createColumns();
         addSelectionListener();
 
-        viewer.setContentProvider(new CustomersContentProvider(customerDAO));
+        viewer.setContentProvider(new CustomersContentProvider(customerService));
         viewer.setInput(new Object());
         viewerComparator = new CustomerViewerComparator();
         viewer.setComparator(viewerComparator);
@@ -161,7 +161,7 @@ public class CustomerPart
             public String getText(Object element)
             {
                 Customer p = (Customer) element;
-                GregorianCalendar dateOfBirth = p.getDateOfBirth();
+                Calendar dateOfBirth = p.getDateOfBirth();
                 DateFormat df = DateFormat.getDateInstance();
                 return df.format(dateOfBirth.getTime());
             }

@@ -13,16 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.mycompany.bread.domain.customer;
+package com.mycompany.bread.domain.deal;
 
 import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -30,11 +32,18 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-@Entity @Table(name = "CUSTOMER") public class Customer
+import com.mycompany.bread.domain.customer.Customer;
+
+@Entity public class Deal
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_DEAL")
     private Integer id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_CUSTOMER", referencedColumnName = "ID_CUSTOMER", nullable = false, updatable = false)
+    private Customer customer;
 
     @Column(name = "FIRSTNAME")
     private String firstname;
@@ -46,12 +55,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
     @Column(name = "DATE_OF_BIRTH")
     private Calendar dateOfBirth;
 
-    public Customer()
+    public Deal()
     {
         // hiding
     }
 
-    public Customer(String firstname, String lastname, Calendar dateOfBirth)
+    public Deal(String firstname, String lastname, Calendar dateOfBirth)
     {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -124,7 +133,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
         {
             return false;
         }
-        Customer castOther = (Customer) other;
+        Deal castOther = (Deal) other;
         return new EqualsBuilder()
             .append(id, castOther.id)
             .append(firstname, castOther.firstname)

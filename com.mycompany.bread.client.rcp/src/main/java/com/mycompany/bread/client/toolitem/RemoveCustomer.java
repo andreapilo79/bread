@@ -25,8 +25,8 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 
 import com.mycompany.bread.client.view.CustomerPart;
-import com.mycompany.bread.dao.CustomerDAO;
 import com.mycompany.bread.domain.customer.Customer;
+import com.mycompany.bread.service.customer.CustomerService;
 
 /**
  * Action: Remove customer selection
@@ -37,7 +37,7 @@ public class RemoveCustomer
     private ESelectionService selectionService;
 
     @Inject
-    private CustomerDAO customerDAO;
+    private CustomerService customerService;
 
     @Execute
     public void execute()
@@ -52,7 +52,7 @@ public class RemoveCustomer
             boolean confirmed = MessageDialog.openConfirm(Display.getCurrent().getActiveShell(), "Confirm delete", msg);
             if (confirmed)
             {
-                customerDAO.delete(selectedCustomer);
+                customerService.delete(selectedCustomer);
             }
         }
     }

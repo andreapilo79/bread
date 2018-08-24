@@ -14,8 +14,12 @@
 	</properties>
 
 	<modules>
+			<module>com.mycompany.bread.db</module>
+ 
+
+
 		<module>com.mycompany.bread.domain</module>
-		<module>com.mycompany.bread.dao</module>
+		<module>com.mycompany.bread.service</module>
 		<module>com.mycompany.bread.client.rcp</module>
 		<module>com.mycompany.bread.target</module>
 		<module>com.mycompany.bread.client.feature</module>
@@ -123,6 +127,13 @@
 			<layout>p2</layout>
 			<url>file:com.mycompany.bread.target2/target/repository/</url>
 		</repository>
+		<repository>
+			<id>gemini</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/gemini/updates/dbaccess/1.1.0</url>
+		</repository>
+		
+		
 		
 	</repositories>
 </project>

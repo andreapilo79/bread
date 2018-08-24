@@ -20,8 +20,8 @@ import java.util.List;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import com.mycompany.bread.dao.CustomerDAO;
 import com.mycompany.bread.domain.customer.Customer;
+import com.mycompany.bread.service.customer.CustomerService;
 
 /**
  * Content providers for structured viewers
@@ -30,17 +30,17 @@ import com.mycompany.bread.domain.customer.Customer;
 public class CustomersContentProvider implements IStructuredContentProvider
 {
 
-    private CustomerDAO customerDAO;
+    private CustomerService customerService;
 
-    public CustomersContentProvider(CustomerDAO customerDAO)
+    public CustomersContentProvider(CustomerService customerService)
     {
-        this.customerDAO = customerDAO;
+        this.customerService = customerService;
     }
 
     @Override
     public Object[] getElements(Object arg0)
     {
-        List<Customer> customers = customerDAO.getAll();
+        List<Customer> customers = customerService.getAll();
         Customer[] customerArray = new Customer[customers.size()];
         customerArray = customers.toArray(customerArray);
         return customerArray;
@@ -58,8 +58,8 @@ public class CustomersContentProvider implements IStructuredContentProvider
         // do nothing
     }
 
-    public void setCustomerDAO(CustomerDAO customerDAO)
+    public void setCustomerService(CustomerService customerService)
     {
-        this.customerDAO = customerDAO;
+        this.customerService = customerService;
     }
 }

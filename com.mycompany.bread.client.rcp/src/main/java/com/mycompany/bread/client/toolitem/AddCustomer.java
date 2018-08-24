@@ -22,7 +22,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 
 import com.mycompany.bread.client.dialog.AddCustomerDialog;
-import com.mycompany.bread.dao.CustomerDAO;
+import com.mycompany.bread.service.customer.CustomerService;
 
 /**
  * Action: Open a dialog to add a customer in database
@@ -31,7 +31,7 @@ import com.mycompany.bread.dao.CustomerDAO;
 public class AddCustomer
 {
     @Inject
-    private CustomerDAO customerDAO;
+    private CustomerService customerService;
 
     @Execute
     public void execute()
@@ -39,7 +39,7 @@ public class AddCustomer
         AddCustomerDialog dialog = new AddCustomerDialog(Display.getDefault().getActiveShell());
         if (dialog.open() == Window.OK)
         {
-            customerDAO.save(dialog.getCurrentCustomer());
+            customerService.save(dialog.getCurrentCustomer());
         }
         dialog.open();
     }

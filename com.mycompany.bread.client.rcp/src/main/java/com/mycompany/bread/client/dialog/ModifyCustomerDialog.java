@@ -16,7 +16,6 @@
 package com.mycompany.bread.client.dialog;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.inject.Inject;
 
@@ -25,15 +24,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
-import com.mycompany.bread.dao.CustomerDAO;
 import com.mycompany.bread.domain.customer.Customer;
+import com.mycompany.bread.service.customer.CustomerService;
 
 public class ModifyCustomerDialog extends AbstractCustomerDialog
 {
     private Customer customerToModify;
 
     @Inject
-    private CustomerDAO customerDAO;
+    private CustomerService customerService;
 
     public ModifyCustomerDialog(Shell parentShell, Customer customerToModify)
     {
@@ -56,7 +55,7 @@ public class ModifyCustomerDialog extends AbstractCustomerDialog
 
         firstNameText.setText(customerToModify.getFirstname());
         lastNameText.setText(customerToModify.getLastname());
-        GregorianCalendar dateOfBirth = customerToModify.getDateOfBirth();
+        Calendar dateOfBirth = customerToModify.getDateOfBirth();
         dateOfBirthControl.setDate(
             dateOfBirth.get(Calendar.YEAR),
             dateOfBirth.get(Calendar.MONTH),
@@ -70,7 +69,7 @@ public class ModifyCustomerDialog extends AbstractCustomerDialog
     {
         Customer customer = getCustomerFromFields();
         customer.setId(customerToModify.getId());
-        customerDAO.update(customer);
+        customerService.update(customer);
         super.okPressed();
     }
 }
