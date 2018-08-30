@@ -1,4 +1,4 @@
-
+package com.mycompany.bread.domain;
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,7 +17,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package entity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -73,9 +72,6 @@ public class EntityManagerHelper
         EntityManager manager = threadLocal.get();
         if (manager == null || !manager.isOpen())
         {
-            @SuppressWarnings("rawtypes")
-            org.eclipse.persistence.jpa.PersistenceProvider persistenceProvider = new org.eclipse.persistence.jpa.PersistenceProvider();
-            factory = persistenceProvider.createEntityManagerFactory("com.mycompany.bread", null);
             manager = factory.createEntityManager();
             threadLocal.set(manager);
         }
@@ -161,6 +157,11 @@ public class EntityManagerHelper
     public static void rollback()
     {
         getEntityManager().getTransaction().rollback();
+    }
+
+    public static void setFactory(EntityManagerFactory factory)
+    {
+        EntityManagerHelper.factory = factory;
     }
 
 }

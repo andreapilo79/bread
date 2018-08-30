@@ -16,11 +16,14 @@
 package com.mycompany.bread.client.handler;
 
 import javax.inject.Named;
+import javax.persistence.metamodel.Metamodel;
 
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
+
+import com.mycompany.bread.domain.EntityManagerHelper;
 
 /**
  * Action: Open dialog with "about" information
@@ -32,6 +35,7 @@ public class AboutHandler
     public void execute(@Named(IServiceConstants.ACTIVE_SHELL)
     Shell shell)
     {
+        Metamodel datamodel = EntityManagerHelper.getEntityManager().getMetamodel();
         MessageDialog.openInformation(shell, "About", "Eclipse 4 Application example.");
     }
 }

@@ -19,6 +19,7 @@ import java.text.MessageFormat;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -26,10 +27,9 @@ import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.Validate;
 
+import com.mycompany.bread.domain.EntityManagerHelper;
 import com.mycompany.bread.domain.customer.Customer;
 import com.mycompany.bread.service.customer.CustomerService;
-
-import entity.EntityManagerHelper;
 
 public class CustomerServiceImpl implements CustomerService
 {
@@ -76,11 +76,14 @@ public class CustomerServiceImpl implements CustomerService
     @Override
     public List<Customer> getAll()
     {
-        CriteriaBuilder cb = EntityManagerHelper.getEntityManager().getCriteriaBuilder();
+        EntityManager entityManager = EntityManagerHelper.getEntityManager();
+        if (entityManager == null)
+            return null;
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
         Root<Customer> rootEntry = cq.from(Customer.class);
         CriteriaQuery<Customer> all = cq.select(rootEntry);
-        TypedQuery<Customer> allQuery = EntityManagerHelper.getEntityManager().createQuery(all);
+        TypedQuery<Customer> allQuery = entityManager.createQuery(all);
 
         return allQuery.getResultList();
     }
