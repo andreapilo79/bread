@@ -34,7 +34,7 @@
 
    <features>
       <feature id="org.eclipse.gemini.dbaccess.h2.feature" version="1.1.0.RELEASE"/>
-      <feature id="org.eclipse.gemini.jpa.feature" version="1.1.0.RELEASE"/>
+      <feature id="org.eclipse.gemini.jpa.feature" version="1.2.0.M1"/>
       <feature id="com.mycompany.bread.client.feature" version="0.0.1.qualifier"/>
       <feature id="org.eclipse.persistence.moxy" version="2.7.2.v20180622-f627448"/>
       <feature id="org.eclipse.persistence.moxy.source" version="2.7.2.v20180622-f627448"/>

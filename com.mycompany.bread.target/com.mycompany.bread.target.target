@@ -3,7 +3,7 @@
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.ide" version="4.5.2.M20160212-1500"/>
-<repository location="http://download.eclipse.org/eclipse/updates/4.5"/>
+<repository location="http://download.eclipse.org/eclipse/updates/4.5/R-4.5.2-201602121500"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.commons.collections" version="3.2.2"/>
